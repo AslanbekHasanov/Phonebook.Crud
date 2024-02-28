@@ -118,28 +118,28 @@ namespace Phonebook.Crud.Services
                 }
 
             }
-            else
-            {
-                // PhoneBooksda qo'shmoqchi bo'lgan ma'lumot bo'lmasa va PhoneBooks
-                // null bo'lmasa. PhoneBooks o'lchamini bittaga oshirish kerak
-                PhoneBook[] phoneBooks = new PhoneBook[PhoneBooks.Length + 1];
+            //else
+            //{
+            //    // PhoneBooksda qo'shmoqchi bo'lgan ma'lumot bo'lmasa va PhoneBooks
+            //    // null bo'lmasa. PhoneBooks o'lchamini bittaga oshirish kerak
+            //    PhoneBook[] phoneBooks = new PhoneBook[PhoneBooks.Length + 1];
 
-                for (int itaration = 0; itaration < PhoneBooks.Length; itaration++)
-                {
-                    phoneBooks[itaration] = PhoneBooks[itaration];
-                }
-                phoneBooks[PhoneBooks.Length] = new PhoneBook
-                {
-                    Id = lastId + 1,
-                    Name = name,
-                    Phone = phone
-                };
-                PhoneBooks = phoneBooks;
-                return true;
+            //    for (int itaration = 0; itaration < PhoneBooks.Length; itaration++)
+            //    {
+            //        phoneBooks[itaration] = PhoneBooks[itaration];
+            //    }
+            //    phoneBooks[PhoneBooks.Length] = new PhoneBook
+            //    {
+            //        Id = lastId + 1,
+            //        Name = name,
+            //        Phone = phone
+            //    };
+            //    PhoneBooks = phoneBooks;
+            //    return true;
 
 
 
-            }
+            //}
 
 
 
@@ -177,16 +177,19 @@ namespace Phonebook.Crud.Services
             {
                 var phoneBook = PhoneBooks[itaration];
 
-                if (id == phoneBook.Id && phoneBook is not null)
+                if (phoneBook is not null)
                 {
-                    PhoneBooks[itaration] = new PhoneBook
+                    if (id == phoneBook.Id && phoneBook is not null)
                     {
-                        Id = 0,
-                        Name = null,
-                        Phone =null
-                    };
-                    return true;
+                        PhoneBooks[itaration] = new PhoneBook
+                        {
+                            Id = 0,
+                            Name = null,
+                            Phone = null
+                        };
+                        return true;
 
+                    }
                 }
 
             }
@@ -206,8 +209,12 @@ namespace Phonebook.Crud.Services
             {
                 var phoneBook = PhoneBooks[itaration];
 
-                if (phoneBook.Id == id && phoneBook is not null)
-                    return phoneBook;
+                if (phoneBook is not null)
+                {
+                    if (phoneBook.Id == id && phoneBook is not null)
+                        return phoneBook;
+
+                }
 
 
             }
@@ -227,15 +234,19 @@ namespace Phonebook.Crud.Services
             for (int itaration = 0; itaration < PhoneBooks.Length; itaration++)
             {
                 var phoneBook = PhoneBooks[itaration];
-                if(!IsThere(_phoneBook.Name, _phoneBook.Phone) && phoneBook.Id == id)
+                if(phoneBook is not null)
                 {
-                    PhoneBooks[itaration] = new PhoneBook
+                    if (!IsThere(_phoneBook.Name, _phoneBook.Phone) && phoneBook.Id == id)
                     {
-                        Id = id,
-                        Name = _phoneBook.Name,
-                        Phone = _phoneBook.Phone,
-                    };
-                    return true;
+                        PhoneBooks[itaration] = new PhoneBook
+                        {
+                            Id = id,
+                            Name = _phoneBook.Name,
+                            Phone = _phoneBook.Phone,
+                        };
+                        return true;
+
+                    }
 
                 }
             }

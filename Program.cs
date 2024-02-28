@@ -24,9 +24,9 @@ while (@cantinue)
     {
         Console.Clear();
         Console.WriteLine("=== Create new phone book ===\n");
-        Console.Write("Enter your phone book name: ");
+        Console.Write("Enter your name: ");
         string? name = Console.ReadLine();
-        Console.Write("Enter your phone book phone: ");
+        Console.Write("Enter your phone: ");
         string? phone = Console.ReadLine();
 
         bool result = phoneBookService.Create(name, phone);
@@ -34,21 +34,21 @@ while (@cantinue)
         if (result)
             Console.WriteLine("Creat !");
         else
-            Console.WriteLine("Created !");
+            Console.WriteLine("Created before!");
     }
     else if(command == 2)
     {
         Console.Clear();
         Console.WriteLine("=== Update phone book ===\n");
 
-        Console.Write("Enter id: ");
+        Console.Write("Enter your exsist id: ");
         int id = Convert.ToInt32(Console.ReadLine());
 
         PhoneBook phoneBook = new PhoneBook();
         phoneBook.Id = id;
-        Console.Write("Enter your phone book name: ");
+        Console.Write("Enter your new name: ");
         phoneBook.Name = Console.ReadLine();
-        Console.Write("Enter your phone book phone: ");
+        Console.Write("Enter your new phone: ");
         phoneBook.Phone = Console.ReadLine();
 
         bool result = phoneBookService.Update(id, phoneBook);
