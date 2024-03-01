@@ -9,7 +9,7 @@ update the Phone Book data to the array.
 <br>
 
 ##### **Image**
-![Home-Page](/Images/home-page.png)
+![Home-Page](/Images/home-page1.png)
 <br>
 
 ### **0.1 There are 5 different situations in the program.**
