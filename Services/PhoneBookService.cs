@@ -4,9 +4,6 @@
 // ---------------------------------------------------------------
 
 using Phonebook.Crud.Model;
-using System.Numerics;
-using System.Runtime.InteropServices;
-using System.Xml.Linq;
 
 namespace Phonebook.Crud.Services
 {
@@ -51,9 +48,7 @@ namespace Phonebook.Crud.Services
                 if (phoneBook is null)
                 {
                     return true;
-
                 }
-
             }
             return false;
         }
@@ -79,8 +74,6 @@ namespace Phonebook.Crud.Services
                     }
 
                 }
-
-
             }
             return false;
         }
@@ -92,15 +85,13 @@ namespace Phonebook.Crud.Services
         /// <param name="name"></param>
         /// <param name="phone"></param>
         /// <returns></returns>
-        public bool Create(string? name, string? phone)
+        public bool Create(string name, string phone)
         {
-
             if(!IsThere(name, phone) && IsEmpty())
             {
                 for (int iteration = 0; iteration < PhoneBooks.Length; iteration++)
                 {
                     PhoneBook phoneBook = PhoneBooks[iteration];
-                    
 
                     if (phoneBook is null)
                     {
@@ -118,34 +109,8 @@ namespace Phonebook.Crud.Services
                 }
 
             }
-            //else
-            //{
-            //    // PhoneBooksda qo'shmoqchi bo'lgan ma'lumot bo'lmasa va PhoneBooks
-            //    // null bo'lmasa. PhoneBooks o'lchamini bittaga oshirish kerak
-            //    PhoneBook[] phoneBooks = new PhoneBook[PhoneBooks.Length + 1];
-
-            //    for (int itaration = 0; itaration < PhoneBooks.Length; itaration++)
-            //    {
-            //        phoneBooks[itaration] = PhoneBooks[itaration];
-            //    }
-            //    phoneBooks[PhoneBooks.Length] = new PhoneBook
-            //    {
-            //        Id = lastId + 1,
-            //        Name = name,
-            //        Phone = phone
-            //    };
-            //    PhoneBooks = phoneBooks;
-            //    return true;
-
-
-
-            //}
-
-
-
 
             return false;
-
         }
 
         /// <summary>
@@ -213,10 +178,8 @@ namespace Phonebook.Crud.Services
                 {
                     if (phoneBook.Id == id && phoneBook is not null)
                         return phoneBook;
-
                 }
-
-
+            
             }
 
             return null;
@@ -252,10 +215,5 @@ namespace Phonebook.Crud.Services
             }
             return false;
         }
-
-
-
-
-
     }
 }
